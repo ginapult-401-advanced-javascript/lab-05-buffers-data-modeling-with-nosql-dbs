@@ -10,23 +10,34 @@
 * [front-end](https://ginapult-deploymentworkshop.herokuapp.com/) (when applicable)
 
 #### Documentation
-* [jsdoc](https://ginapult-deploymentworkshop.herokuapp.com/docs/) (Server assignments)
+* [jsdoc](https://lab-05-buff-data-mod-nosql-db.herokuapp.com/docs/) (Server assignments)
 
 ### Modules
-#### `pos.js`
+#### `mongo.js`
 ##### Exported Values and Methods
 
-###### `isAlive(dead) -> boolean`
-Returns true/false to indicate how the server works
+###### `get(_id) -> {*}`
+Returns one or more records by id
+
+###### `creates(record) -> {*}`
+Creates a new record based on model/schema
+
+###### `update(_id, record) -> {*}`
+Updates record in database with new specified record
+
+###### `delete(_id) -> {*}`
+Deletes a record by id
+
 
 ### Setup
 #### `.env` requirements
 * `PORT` - 3000
+* `DB_CONNECT` - URL for running MongoDB Atlas DB
 
 #### Running the app
 * `npm start`
 * Endpoint: `/`
-  * Returns a boolean.
+  * Returns ???
 * Endpoint: `/docs`
   * Returns JSDoc Documentation Pages.
   
@@ -35,7 +46,7 @@ Returns true/false to indicate how the server works
 * Lint Tests: 'npm run lint'
 
 Incomplete Tests:
-- Need to test xyz ...
+- Update products test failing
 
 #### UML
-![UML Diagram](whiteboard.jpg)
+![UML Diagram](uml.jpg)
