@@ -8,7 +8,13 @@ dotenv.config();
 app.use
 
 // Require your model
-const Categories = require('./models-singular/categories.js');
+// Model-singular
+// const Categories = require('./models-singular/categories.js');
+// const Products = require('./models-singular/products');
+
+//Model-modular
+const Categories = require('./models-modular/categories/categories.js');
+const Products = require('./models-modular/products/products.js');
 
 // Mongoose Server URI
 const MONGOOSE_URI = process.env.DB_CONNECT;
@@ -24,10 +30,10 @@ app.listen(process.env.PORT, () => console.log('Server up and running, Gina'));
 // Do some work
 const categories = new Categories();
 
-const work = async () => {
+const workCategories = async () => {
     const testCategory = {
-        name: "Testing name",
-        description: "Testing description",
+        name: "Testing category name",
+        description: "Testing category description",
     };
 
     let newTestCategory = await categories.create(testCategory)
@@ -35,7 +41,22 @@ const work = async () => {
         .catch( error => console.log(error));
 };
 
-work();
+const products = new Products();
+
+const workProducts = async () => {
+    const testProduct = {
+        name: "Testing product name",
+        description: "Testing product description",
+        price: 100,
+    };
+
+    let newTestProduct = await products.create(testProduct)
+        .then( returnProduct => console.log('Returned test product', returnProduct))
+        .catch( error => console.log(error));
+};
+
+workCategories();
+workProducts();
 
 
 // Disconnect - NA on MongoDB Atlas
